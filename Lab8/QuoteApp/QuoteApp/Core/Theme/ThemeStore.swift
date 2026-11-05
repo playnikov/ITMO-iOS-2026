@@ -20,7 +20,6 @@ final class ThemeStore: ObservableObject {
         }
     }
 
-    
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         self.isDarkMode = defaults.bool(forKey: key)

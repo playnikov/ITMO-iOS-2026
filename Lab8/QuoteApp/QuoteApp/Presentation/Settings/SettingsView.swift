@@ -27,7 +27,11 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    Button(role: .destructive) { showClearAlert = true } label: { Label("Очистить избранное", systemImage: "trash") }
+                    Button(role: .destructive) {
+                        showClearAlert = true
+                    } label: {
+                        Label("Очистить избранное", systemImage: "trash")
+                    }
                 }
             }
             .navigationTitle("Настройки")

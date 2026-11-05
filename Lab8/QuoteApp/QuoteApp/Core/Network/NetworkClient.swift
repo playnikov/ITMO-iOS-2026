@@ -61,7 +61,7 @@ class NetworkClient: NetworkClientProtocol {
         } catch let urlError as URLError {
             log.error("URLError \(urlError.code.rawValue): \(urlError.localizedDescription, privacy: .public)")
             throw Self.mapURLError(urlError)
-        } catch  {
+        } catch {
             throw APIError.transport(description: error.localizedDescription)
         }
         
@@ -76,7 +76,6 @@ class NetworkClient: NetworkClientProtocol {
         
         try Self.validate(statusCode: http.statusCode, data: data, headers: http, log: log)
         
-        
         do {
             return try decoder.decode(T.self, from: data)
         } catch let decodingError as DecodingError {
@@ -84,7 +83,9 @@ class NetworkClient: NetworkClientProtocol {
             log.error("Decode failed: \(mapped.localizedDescription, privacy: .public)")
             throw mapped
         } catch {
-            log.error("Decode \(String(describing: T.self), privacy: .public) failed: \(error.localizedDescription, privacy: .public)")
+            let typeName = String(describing: T.self)
+            let errorDesc = error.localizedDescription
+            log.error("Decode \(typeName, privacy: .public) failed: \(errorDesc, privacy: .public)")
             throw APIError.decodingFailed(path: "\(T.self)", reason: error.localizedDescription)
         }
     }
@@ -110,7 +111,6 @@ class NetworkClient: NetworkClientProtocol {
             throw APIError.unexpectedStatus(status: statusCode)
         }
     }
-    
     
     private static func mapURLError(_ error: URLError) -> APIError {
         switch error.code {

@@ -18,7 +18,8 @@ final class DIContainer {
     lazy var themeStore: ThemeStore = ThemeStore()
     
     private lazy var quoteRepository: QuoteRepositoryProtocol = QuoteRepository(network: network)
-    private lazy var favoritesRepository: FavoritesRepositoryProtocol = CoreDataFavoritesRepository(stack: coreDataStack)
+    private lazy var favoritesRepository: FavoritesRepositoryProtocol
+    = CoreDataFavoritesRepository(stack: coreDataStack)
         
     private lazy var fetchQuoteUseCase = FetchQuoteOfTheDayUseCase(repository: quoteRepository)
     private lazy var fetchQuotesUseCase = FetchQuotesUseCase(repository: quoteRepository)

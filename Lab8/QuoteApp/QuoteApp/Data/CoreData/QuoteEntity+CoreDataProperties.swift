@@ -9,8 +9,7 @@
 import Foundation
 import CoreData
 
-
-extension QuoteEntity : Identifiable {
+extension QuoteEntity: Identifiable {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<QuoteEntity> {
         NSFetchRequest<QuoteEntity>(entityName: "QuoteEntity")
     }

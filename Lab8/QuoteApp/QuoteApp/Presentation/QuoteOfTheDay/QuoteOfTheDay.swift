@@ -90,7 +90,7 @@ struct QuoteOfTheDay: View {
         VStack(spacing: 16) {
             Image(systemName: "wifi.exclamationmark")
             Text(error).multilineTextAlignment(.center)
-            Button("Повторить") { Task { await viewModel.load() }}
+            Button("Повторить") { Task { await viewModel.load() } }
         }
     }
 }

@@ -18,7 +18,11 @@ struct FavoritesView: View {
         NavigationStack {
             Group {
                 if viewModel.favorites.isEmpty {
-                    EmptyStateView(title: "Нет избранного", systemImage: "heart.slash", description: "Добавьте цитаты с главного экрана")
+                    EmptyStateView(
+                        title: "Нет избранного",
+                        systemImage: "heart.slash",
+                        description: "Добавьте цитаты с главного экрана"
+                    )
                 } else {
                     List {
                         ForEach(viewModel.favorites) { quote in

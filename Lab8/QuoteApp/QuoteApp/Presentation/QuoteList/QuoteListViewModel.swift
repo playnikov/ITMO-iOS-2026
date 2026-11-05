@@ -66,7 +66,6 @@ final class QuoteListViewModel: ObservableObject {
         }
     }
     
-    
     private func loadPage() async {
         guard !isLoading, canLoadMore else { return }
         isLoading = true
